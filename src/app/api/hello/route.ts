@@ -1,3 +1,12 @@
-export async function GET(request: Request) {
-  return new Response('Hello, Next.js!')
-}
+/* eslint-disable import/no-anonymous-default-export */
+import { NextRequest, NextResponse } from "next/server";
+
+export const config = {
+  runtime: 'edge',
+};
+
+export default (req: NextRequest) => {
+  return NextResponse.json({
+    name: `Hello, from ${req.url} I'm now an Edge Function!`,
+  });
+};
